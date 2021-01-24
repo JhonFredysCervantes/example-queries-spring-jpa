@@ -52,6 +52,17 @@ public class Persona implements Serializable{
 
 	public Persona() {}
 
+	public Persona(String numeroIdentificacion, String primerNombre, String primerApellido, char genero,
+			Date nacimiento, Date fallecimiento) {
+		super();
+		this.numeroIdentificacion = numeroIdentificacion;
+		this.primerNombre = primerNombre;
+		this.primerApellido = primerApellido;
+		this.genero = genero;
+		this.nacimiento = nacimiento;
+		this.fallecimiento = fallecimiento;
+	}
+
 	public Long getIdPersona() {
 		return idPersona;
 	}
@@ -128,4 +139,60 @@ public class Persona implements Serializable{
 	public String toString() {
 		return this.primerNombre + " - " + this.primerApellido;
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Persona other = (Persona) obj;
+		if (fallecimiento == null) {
+			if (other.fallecimiento != null)
+				return false;
+		} else if (!fallecimiento.equals(other.fallecimiento))
+			return false;
+		if (genero != other.genero)
+			return false;
+		if (idPersona == null) {
+			if (other.idPersona != null)
+				return false;
+		} else if (!idPersona.equals(other.idPersona))
+			return false;
+		if (nacimiento == null) {
+			if (other.nacimiento != null)
+				return false;
+		} else if (!nacimiento.equals(other.nacimiento))
+			return false;
+		if (numeroIdentificacion == null) {
+			if (other.numeroIdentificacion != null)
+				return false;
+		} else if (!numeroIdentificacion.equals(other.numeroIdentificacion))
+			return false;
+		if (primerApellido == null) {
+			if (other.primerApellido != null)
+				return false;
+		} else if (!primerApellido.equals(other.primerApellido))
+			return false;
+		if (primerNombre == null) {
+			if (other.primerNombre != null)
+				return false;
+		} else if (!primerNombre.equals(other.primerNombre))
+			return false;
+		if (segundoApellido == null) {
+			if (other.segundoApellido != null)
+				return false;
+		} else if (!segundoApellido.equals(other.segundoApellido))
+			return false;
+		if (segundoNombre == null) {
+			if (other.segundoNombre != null)
+				return false;
+		} else if (!segundoNombre.equals(other.segundoNombre))
+			return false;
+		return true;
+	}
+	
+	
 }

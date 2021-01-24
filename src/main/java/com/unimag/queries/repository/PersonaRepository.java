@@ -45,9 +45,17 @@ public interface PersonaRepository extends JpaRepository<Persona, Long> {
 	List<Persona> findByNacimientoBetween(Date inferior, Date  superior);
 	
 	//Buscar personas por rango de fecha de nacimiento (lo cual sería lo mismo para edad) por consulta definida
-	@Query("SELECT p FROM Persona p WHERE p.nacimiento BETWEEN :inf AND :sup")
-	List<Persona>buscarPorRangoFechaNacimiento(@Param("inf") Date inferior, @Param("inf") Date  superior);
+	@Query("SELECT p FROM Persona p WHERE p.nacimiento BETWEEN :inferior AND :superior")
+	List<Persona>buscarPorRangoFechaNacimiento(@Param("inferior") Date inferior, @Param("superior") Date  superior);
 	
+	
+	/*
+
+	//Edad de una persona buscada por medio de la identificación
+	@Query("SELECT YEAR(CURRENT_DATE() - p.nacimiento) FROM Persona p WHERE p.identificacion = :ident")
+	int edadPersona(@Param("ident")String identificacion);
+	
+	*/
 	
 
 }
